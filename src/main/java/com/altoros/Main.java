@@ -16,7 +16,7 @@ public class Main {
     final static Logger logger = Logger.getLogger(Main.class);
 
     public static void main(String[] args) throws IOException {
-        logger.debug("test");
+        logger.debug("test12345");
 //        ConnectionFactory factory = new ConnectionFactory();
 //        factory.setHost("localhost");
 //        Connection connection = factory.newConnection();

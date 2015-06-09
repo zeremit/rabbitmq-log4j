@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeoutException;
 
 
 /**
@@ -84,6 +85,8 @@ public class RabbitMQAppender extends AppenderSkeleton {
             this.createConnection();
         } catch (IOException ioe) {
             errorHandler.error(ioe.getMessage(), ioe, ErrorCode.GENERIC_FAILURE);
+        } catch (TimeoutException e) {
+            e.printStackTrace();
         }
 
         //== creating channel
@@ -334,7 +337,7 @@ public class RabbitMQAppender extends AppenderSkeleton {
      * @return
      * @throws IOException
      */
-    private Connection createConnection() throws IOException {
+    private Connection createConnection() throws IOException, TimeoutException {
         setFactoryConfiguration();
         if (this.connection == null || !this.connection.isOpen()) {
             this.connection = factory.newConnection();
@@ -354,6 +357,8 @@ public class RabbitMQAppender extends AppenderSkeleton {
                 channel.close();
             } catch (IOException ioe) {
                 errorHandler.error(ioe.getMessage(), ioe, ErrorCode.CLOSE_FAILURE);
+            } catch (TimeoutException e) {
+                e.printStackTrace();
             }
         }
 
