@@ -1,4 +1,4 @@
-package com.plant42.log4j.layouts;
+package com.altoros.layout;
 
 import org.apache.log4j.Layout;
 import org.apache.log4j.spi.LoggingEvent;

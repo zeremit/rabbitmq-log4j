@@ -1,4 +1,4 @@
-package com.plant42.log4j.appenders;
+package com.altoros.appenders;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
